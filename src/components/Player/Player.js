@@ -4,7 +4,7 @@ import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 
 const Player = (props) => {
     const { name, balance, image } = props.player;
-    const [selected, setSelection] = useState(false);
+    const [selection, setSelection] = useState(false);
 
     return (
         <div className="col text-center">
@@ -14,11 +14,11 @@ const Player = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">${balance}</p>
-                    <button disabled={selected} onClick={() => {
+                    <button disabled={selection} onClick={() => {
                         props.addToCartHandler(props.player)
                         setSelection(true)
                     }} className="btn btn-warning">
-                        {selected ? "Selected" : "Select Me   "}
+                        {selection ? "Selected" : "Select Me   "}
                         <FontAwesomeIcon icon={faHandPointer} />
                     </button>
                 </div>
