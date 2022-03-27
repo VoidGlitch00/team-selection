@@ -5,11 +5,17 @@ import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = ({ cart, setCart }) => {
     const total = cart.reduce((prev, curr) => prev + curr.balance, 0)
-    
+
     const randomlyOne = () => {
-        const one = Math.floor(Math.random() * cart.length);
-        return(cart[one].name);
+        if (cart.length > 0) {
+            const one = Math.floor(Math.random() * cart.length);
+            const luckyNumber = cart[one];
+            setCart([luckyNumber]);
+        }
     }
+    const clearSelection = () => {
+        setCart([]);
+      }
 
     return (
         <aside className="sidebar col-md-4 ps-5">
@@ -20,13 +26,13 @@ const Sidebar = ({ cart, setCart }) => {
                 }
 
             </ul>
-            <p>Your Player: {randomlyOne}</p>
+
             <div className="d-grid">
-                <button className="btn btn-info"><FontAwesomeIcon icon={faDollarSign} /> Total Budget - ${total}</button> 
+                <button className="btn btn-info"><FontAwesomeIcon icon={faDollarSign} /> Total Budget - ${total}</button>
                 <br></br>
                 <button onClick={randomlyOne} className="btn btn-info">Randomly Select One</button>
                 <br></br>
-                {/* <button onClick={clearSelection} className="btn btn-info">Clear Selection</button> */}
+                <button onClick={clearSelection} className="btn btn-info">Clear Selection</button>
             </div>
         </aside>
     );

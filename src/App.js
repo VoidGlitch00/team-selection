@@ -10,9 +10,6 @@ function App() {
     const newCart = [...cart, player];
     setCart(newCart);
   }
-  const clearSelection = () => {
-    setCart([]);
-  }
 
 
   return (
@@ -21,8 +18,7 @@ function App() {
       <main className="container">
         <div className="row">
           <Players addToCartHandler={addToCartHandler}> </Players>
-          <Sidebar cart={cart}> </Sidebar>
-          <button onClick={clearSelection} className="btn btn-info">Clear Selection</button>  
+          <Sidebar cart={cart} setCart={setCart} > </Sidebar>
         </div>
       </main>
 
